@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.harsona.spring_board.dao.IDao">
+	<select id="listDao" resultType="com.harsona.spring_board.dto.ContentDto">
+		SELECT * FROM MEMBERLIST ORDER BY MID DESC
+	</select>
+
+	<insert id="writeDao">
+		INSERT INTO MEMBERLIST (MID, MNAME, MPHONE, MADDRESS, MDATE) VALUES (MEMBER_SEQ.NEXTVAL, #{param1}, #{param2}, #{param3}, #{param4})
+	</insert>
+	
+	<select id="viewDao" resultType="com.harsona.spring_board.dto.ContentDto">
+		SELECT * FROM MEMBERLIST WHERE MID = #{param1}
+	
+	</select>	
+	
+	<delete id="deleteDao">
+		DELETE FROM MEMBERLIST WHERE MID = #{param1}
+	</delete>
+	
+	<update id="modifyDao">
+		UPDATE MEMBERLIST SET MNAME = #{param1}, MPHONE = #{param2}, MADDRESS = #{param3}, MDATE = #{param4} WHERE mId = #{param5}  
+	</update>
+
+</mapper>
